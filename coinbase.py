@@ -50,9 +50,8 @@ class coinbase:
                     pairList.append(pairData[i])
         return pairList
     
-    def getCandles(self,pair,start=(int(time.time())),end=((int(time.time()))-21000)):
-        candles  = self.restApiCall(path=f"products/{pair}/candles",parameters=f"?start={start}&end={end}&granularity=ONE_MINUTE")['candles']
-        return candles
+    def getCandles(self,pair,start=((int(time.time()))-21000),end=(int(time.time()))):
+        return self.restApiCall(path=f"products/{pair}/candles",parameters=f"?start={start}&end={end}&granularity=ONE_MINUTE")['candles']
 
     def getLikelyPumps(self):
         returnData = []
